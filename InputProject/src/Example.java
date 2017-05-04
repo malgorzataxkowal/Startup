@@ -5,6 +5,7 @@
 import com.sun.deploy.util.SyncAccess;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Example {
@@ -14,10 +15,12 @@ public class Example {
     public static void main(String args[]) {
         //System.out.println(example);
         //System.out.println(anInteger);
+        //System.out.println(Example.anInt);
         Example example = new Example();
         //example.primeNumber();
-        example.searchNumber();
-        //System.out.println(Example.anInt);
+        //example.searchNumber();
+        example.randomNumbers();
+
     }
 
     public void primeNumber() {
@@ -41,8 +44,7 @@ public class Example {
         else
             System.out.println(number + " in not prime number");
     }
-    public void searchNumber()
-    {
+    public void searchNumber() {
         int counter,num,item,array[],first,last,middle;
         Scanner input1=new Scanner(System.in);
         System.out.println("Enter number of table's elements:");
@@ -78,5 +80,14 @@ public class Example {
         if (first >last)
             System.out.println(item + "is not found");
 
+    }
+    public void randomNumbers() {
+        int counter,randomCounter2;
+        Random randomNumber=new Random();
+        System.out.println("How many random numbers do you need? ");
+        Scanner randomCounter=new Scanner(System.in);
+        randomCounter2 = randomCounter.nextInt();
+        for (counter=0; counter< randomCounter2;counter++)
+            System.out.println(randomNumber.nextInt(200));
     }
 }
