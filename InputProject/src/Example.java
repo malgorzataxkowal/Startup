@@ -5,8 +5,9 @@
 import com.sun.deploy.util.SyncAccess;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
-import java.util.Random;
-import java.util.Scanner;
+import java.rmi.MarshalledObject;
+import java.util.*;
+
 
 public class Example {
     static int anInt;
@@ -19,8 +20,8 @@ public class Example {
         Example example = new Example();
         //example.primeNumber();
         //example.searchNumber();
-        example.randomNumbers();
-
+        //example.randomNumbers();
+        example.countRepeatedValue("ile tu jest a a ile i");
     }
 
     public void primeNumber() {
@@ -89,5 +90,30 @@ public class Example {
         randomCounter2 = randomCounter.nextInt();
         for (counter=0; counter< randomCounter2;counter++)
             System.out.println(randomNumber.nextInt(200));
+    }
+    public void countRepeatedValue(String myString){
+        char[] charTable=myString.toCharArray();
+        //create hashmap
+        Map<Character,Integer> charMap=new HashMap<Character,Integer>();
+
+        for (char charInTable:charTable)
+        {
+            if(charMap.containsKey(charInTable))
+            {
+                charMap.replace(charInTable,charMap.get(charInTable),charMap.get(charInTable)+1);
+            }
+            else{
+                charMap.put(charInTable,1);
+            }
+        }
+        //to find unique value and then search duplicates I prepared keys
+        Set<Character> keys=charMap.keySet();
+        for (Character keyChar: keys)
+        {
+            if(charMap.get(keyChar)>1) {
+                System.out.println("the " + keyChar + " appears in string " + charMap.get(keyChar) + " times");
+            }
+        }
+
     }
 }
